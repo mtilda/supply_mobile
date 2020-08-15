@@ -1,7 +1,7 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import Octicons from "react-native-vector-icons/Octicons";
 
 import Home from "./Home.jsx";
 import Activity from "./Activity.jsx";
@@ -25,22 +25,22 @@ export default function App() {
 
             switch(route.name) {
               case "Supplies":
-                iconName = "buromobelexperte"
+                iconName = "versions"
               break;
               case "Activity":
-                iconName = "list";
+                iconName = "list-unordered";
               break;
               case "Inventory":
-                iconName = "shopping-cart";
+                iconName = "checklist";
               break;
               case "New Item":
-                iconName = "plus-square";
+                iconName = "diff-added";
               break;
               default:
                 break;
             }
 
-            return <FontAwesome5 name={iconName} size={size} color={color} />;
+            return <Octicons name={iconName} size={size} color={color} />;
           },
         })}
         tabBarOptions={{
