@@ -1,5 +1,4 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
@@ -17,7 +16,7 @@ export default function App() {
       <Tab.Navigator
 
         screenOptions={({ route }) => ({
-
+          
           tabBarIcon: ({ focused, color, size }) => {
             
             size = 40;
@@ -38,7 +37,7 @@ export default function App() {
                 iconName = "plus-square";
               break;
               default:
-              break;
+                break;
             }
 
             return <FontAwesome5 name={iconName} size={size} color={color} />;
@@ -51,10 +50,10 @@ export default function App() {
           style: { height: 70 },
         }}
       >
-        <Tab.Screen name="Supplies" component={Home} options={{ size: 10 }} />
-        <Tab.Screen name="Activity" component={Activity} />
-        <Tab.Screen name="Inventory" component={Inventory} />
-        <Tab.Screen name="New Item" component={ItemCreate} />
+          <Tab.Screen name="Supplies" component={Home} options={{ size: 10 }} />
+          <Tab.Screen name="Activity" component={Activity} />
+          <Tab.Screen name="Inventory" component={Inventory} />
+          <Tab.Screen name="New Item" component={ItemCreate} />
       </Tab.Navigator>
     </NavigationContainer>
   )
