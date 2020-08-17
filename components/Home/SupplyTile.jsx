@@ -2,8 +2,8 @@ import React from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { Text } from "react-native-elements";
 
-const SupplyTile = ({ name, color, id, onPress }) => (
-    <TouchableOpacity onPress={onPress}>
+const SupplyTile = ({ name, color, index, selectSupply }) => (
+    <TouchableOpacity onPress={() => selectSupply(index)}>
         <View style={[ styles.container, { backgroundColor: color,  } ]} >
             <Text style={styles.text}>{name}</Text>
         </View>
