@@ -19,7 +19,7 @@ const Home = ({ navigation }) => {
             setActivity(true);
             try {
                 const response = await axios({
-                    url: `http://localhost:3000/groups/${sessionData.group.id}/supplies`,
+                    url: `https://mxk-supply-api.herokuapp.com/groups/${sessionData.group.id}/supplies`,
                     method: "GET"
                 });
                 setSupplies(response.data);
