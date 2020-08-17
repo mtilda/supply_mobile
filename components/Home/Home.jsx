@@ -12,12 +12,15 @@ const Home = () => {
     const [ supplies, setSupplies ] = useState([]);
     const [ activity, setActivity ] = useState(true);
 
+
+    // ON MOUNT
+    // FETCH supplies in current group
     useEffect(() => {
         const makeAPICall = async () => {
             setActivity(true);
             try {
                 const response = await axios({
-                    url: `http://localhost:3000/groups/1/supplies`,
+                    url: `http://localhost:3000/groups/${sessionData.group.id}/supplies`,
                     method: "GET"
                 });
                 setSupplies(response.data);
@@ -27,11 +30,21 @@ const Home = () => {
             setActivity(false);
         };
         makeAPICall();
-    },[])
+    },[]);
+
+    const selectSupply = (index) => {
+        const supply = supplies[index];
+        if (supply) {
+            setSessionData({ ...sessionData, supply: supply });
+        }
+        else {
+            console.error("selected supply does not exist");
+        }
+    }
 
     return (
         <Layout>
-            <SupplyGrid supplies={supplies} activity={activity} />
+            <SupplyGrid supplies={supplies} selectSupply={selectSupply} activity={activity} />
         </Layout>
     )
 }

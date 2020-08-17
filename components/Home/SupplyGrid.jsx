@@ -4,7 +4,7 @@ import { Text } from "react-native-elements";
 
 import SupplyTile from "./SupplyTile.jsx";
 
-const SupplyGrid = ({ supplies, onPress, activity }) => (
+const SupplyGrid = ({ supplies, selectSupply, activity }) => (
     
     <View style={styles.vertical}>
         <View style={styles.container}>
@@ -13,7 +13,7 @@ const SupplyGrid = ({ supplies, onPress, activity }) => (
                     <ActivityIndicator />
                 :
                     supplies[0]?
-                        supplies.map( supply => <SupplyTile name={supply.name} color={supply.color} id={supply.id} onPress={onPress} />)
+                        supplies.map( (supply, index) => <SupplyTile name={supply.name} color={supply.color} index={index} selectSupply={selectSupply} />)
                     :
                         <Text>You aren't tracking any supplies yet</Text> }
         </View>
