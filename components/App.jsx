@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Octicons from "react-native-vector-icons/Octicons";
 
 import Home from "./Home/Home.jsx";
-import Activity from "./Activity.jsx";
+import Activity from "./Activity/Activity.jsx";
 import Inventory from "./Inventory.jsx";
 import ItemCreate from "./ItemCreate.jsx";
 
