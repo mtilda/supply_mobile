@@ -10,17 +10,19 @@ const SupplyTile = ({ name, color, index, selectSupply }) => (
     </TouchableOpacity>
 );
 
+const tileSize = 125;
+
 const styles = StyleSheet.create({
     container: {
-        width: 100,
-        height: 100,
+        width: tileSize,
+        height: tileSize,
         textAlign: "center",
         textAlignVertical: "center",
         margin: 5,
         borderRadius: 5,
     },
     text: {
-        lineHeight: 100,
+        lineHeight: tileSize,
         color: "#fff",
     }
 })
