@@ -1,8 +1,8 @@
 import { createContext } from "react"
 
 const SessionDataContext = createContext({
-    group:  { id: 1, name: "House" },
-    user:   { id: 1, name: "Kay" },
+    group:  { id: null, name: "" },
+    user:   { id: null, name: "" },
     supplies: [],
     supply: { id: null, name: "", color: "" },
     items: [],
