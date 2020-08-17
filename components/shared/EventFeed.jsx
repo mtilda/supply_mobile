@@ -3,8 +3,7 @@ import { ActivityIndicator, View, Text } from 'react-native';
 
 import EventFeedItem from "./EventFeedItem";
 
-const EventFeed = ({ events, activity }) => {
-    
+const EventFeed = ({ events, units, activity }) => {
     return (
         <View>
             {
@@ -12,9 +11,15 @@ const EventFeed = ({ events, activity }) => {
                     <ActivityIndicator />
                 :
                     events[0]?
-                        events.map( (event, index) => <EventFeedItem key={index} event={event} />)
+                        units[0]?
+                            events.map( (event, index) => <EventFeedItem key={index} event={event} /> )
+                        :
+                            <Text>Failed to fetch units</Text>
                     :
-                        <Text>There has been no activity in this supply</Text>
+                        units[0]?
+                            <Text>There has been no activity in this supply</Text>
+                        :
+                            <Text>Unable to fetch data from server</Text>
             }
         </View>
     );
