@@ -28,7 +28,7 @@ const Layout = ({ children }) => {
                     numberOfLines={1}
                     style={{
                         // fontSize: 20,
-                        fontWeight: 800,
+                        fontWeight: "bold",
                         color: "#fff"
                     }}
                 >
