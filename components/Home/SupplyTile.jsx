@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { Text } from "react-native-elements";
 
-const SupplyTile = ({ name, color, index, selectSupply }) => (
+const SupplyTile = ({ index, name, color, selectSupply }) => (
     <TouchableOpacity onPress={() => selectSupply(index)}>
         <View style={[ styles.container, { backgroundColor: color,  } ]} >
             <Text style={styles.text}>{name}</Text>
@@ -14,15 +14,15 @@ const tileSize = 125;
 
 const styles = StyleSheet.create({
     container: {
+        flexDirection: "column",
+        justifyContent: "center",
         width: tileSize,
         height: tileSize,
-        textAlign: "center",
-        textAlignVertical: "center",
         margin: 5,
         borderRadius: 5,
     },
     text: {
-        lineHeight: tileSize,
+        textAlign: "center",
         color: "#fff",
     }
 })
