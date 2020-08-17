@@ -7,11 +7,10 @@ import axios from "axios";
 
 import SessionDataContext from "../context/SessionDataContext";
 
-const Home = () => {
+const Home = ({ navigation }) => {
     const { sessionData, setSessionData } = useContext(SessionDataContext);
     const [ supplies, setSupplies ] = useState([]);
     const [ activity, setActivity ] = useState(true);
-
 
     // ON MOUNT
     // FETCH supplies in current group
@@ -36,6 +35,7 @@ const Home = () => {
         const supply = supplies[index];
         if (supply) {
             setSessionData({ ...sessionData, supply: supply });
+            navigation.navigate("Activity");
         }
         else {
             console.error("selected supply does not exist");
