@@ -16,7 +16,7 @@ const Tab = createBottomTabNavigator();
 export default function App() {
 
   const [sessionData, setSessionData] = useState({
-    group:    { id: 1, name: "House", supplies: [] },
+    group:  { id: 1, name: "House", supplies: [] },
     user:   { id: 1 },
     supply: { id: null, name: "", color: "", items: [] },
     item: {
