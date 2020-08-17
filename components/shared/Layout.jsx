@@ -1,14 +1,22 @@
 import React from "react";
-import { View, Platform, StatusBar } from 'react-native';
+import { Dimensions, View, Platform, StatusBar } from 'react-native';
 import { Text, Header } from 'react-native-elements';
 import Octicons from "react-native-vector-icons/Octicons";
 
 const groupTitle = "House", supplyTitle = "Groceries"
 
 const Layout = ({ children }) => {
+
+    const headerHeight = 60;
+
     return (
-        <View style={{ paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 }} >
-            <Header containerStyle = {{ height: 60 }} >
+        <View style={
+            {
+                width: Dimensions.get("window").width,
+                height: Dimensions.get("window").height,
+                paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+            }} >
+            <Header containerStyle = {{ height: headerHeight }} >
 
                 {/* leftComponent */}
                 <></>
@@ -31,7 +39,9 @@ const Layout = ({ children }) => {
                 <Octicons name="sign-out" size={30} color="#fff" />
 
             </Header>
-            {children}
+            <View style={{ height: Dimensions.get("window").height - headerHeight }}>
+                {children}
+            </View>
         </View>
     );
 };
