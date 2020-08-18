@@ -6,6 +6,7 @@ const SessionDataContext = createContext({
     supplies: [],
     supply: { id: null, name: "", color: "" },
     items: [],
+    item: { id: null },
 });
 
 export default SessionDataContext;
