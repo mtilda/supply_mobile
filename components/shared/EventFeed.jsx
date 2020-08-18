@@ -12,7 +12,7 @@ const EventFeed = ({ events, units, activity }) => {
                 :
                 events[0]? units[0]?
                     <ScrollView>
-                        { [...events, ...events].map( (event, index) => <EventFeedItem key={index} event={event} /> ) }
+                        { events.map( (event, index) => <EventFeedItem key={index} event={event} /> ) }
                     </ScrollView>
                 :
                     <Text>Failed to fetch units</Text>
