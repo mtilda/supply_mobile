@@ -5,54 +5,66 @@ import { Text } from "react-native-elements";
 import { prettyDateTimeFromSQL } from "../../util/DateTime";
 
 const EventFeedItem = ({ event }) => (
-    <View style={[ styles.container, {backgroundColor:
-            event.event_type === "GET" ?            "green"
-        :   event.event_type === "DEPLETE" ?        "red"
-        :   event.event_type === "NEAR_DEPLETED" ?  "yellow"
-        :   event.event_type === "START" ?          "orange"
-        :   event.event_type === "STOP" ?           "teal"
-        :                                           "purple"
-    }]}>
-        <Text style={[ styles.name ]} >{`${event.user.name}`}</Text>
-        {
-            event.event_type === "GET" ?
-                <Text style={[ styles.message ]} >{`picked up ${event.delta} ${
-                    event.delta == 1 ?
-                        event.item.unit.singular
-                    :
-                        event.item.unit.plural
-                    } of ${event.item.name}`}
-                </Text>
+    <View style={styles.container}>
+        <View style={[styles.scarf, { backgroundColor:
+                event.event_type === "GET" ?            "green"
+            :   event.event_type === "DEPLETE" ?        "red"
+            :   event.event_type === "NEAR_DEPLETED" ?  "yellow"
+            :   event.event_type === "START" ?          "orange"
+            :   event.event_type === "STOP" ?           "teal"
+            :                                           "purple"
+        }]}/>
+        <View style={styles.card} >
+            <Text style={[ styles.name ]} >{`${event.user.name}`}</Text>
+            {
+                event.event_type === "GET" ?
+                    <Text style={[ styles.message ]} >{`Picked up ${event.delta} ${
+                        event.delta == 1 ?
+                            event.item.unit.singular
+                        :
+                            event.item.unit.plural
+                        } of ${event.item.name}`}
+                    </Text>
 
-            : event.event_type === "DEPLETE" ?
-                <Text style={[ styles.message ]} >{`we ran out of ${event.item.name}`}</Text>
+                : event.event_type === "DEPLETE" ?
+                    <Text style={[ styles.message ]} >{`We ran out of ${event.item.name}`}</Text>
 
-            : event.event_type === "NEAR_DEPLETED" ?
-                <Text style={[ styles.message ]} >{`we're nearly out of ${event.item.name}`}</Text>
+                : event.event_type === "NEAR_DEPLETED" ?
+                    <Text style={[ styles.message ]} >{`We're nearly out of ${event.item.name}`}</Text>
+                
+                : event.event_type === "START" ?
+                    <Text style={[ styles.message ]} >{`Started tracking ${event.item.name}`}</Text>
+                
+                : event.event_type === "STOP" ?
+                    <Text style={[ styles.message ]} >{`Stopped tracking ${event.item.name}`}</Text>
             
-            : event.event_type === "START" ?
-                <Text style={[ styles.message ]} >{`started tracking ${event.item.name}`}</Text>
-            
-            : event.event_type === "STOP" ?
-                <Text style={[ styles.message ]} >{`stopped tracking ${event.item.name}`}</Text>
-        
-            :
-                <>
-                    <Text style={[ styles.message ]} >{`did something unexpected`}</Text>
-                    {console.error(`unexpected event type: ${event.event_type}`)}
-                </>
-        }
-        <Text style={[ styles.date ]} >{prettyDateTimeFromSQL(event.date_time)}</Text>
+                :
+                    <>
+                        <Text style={[ styles.message ]} >{`Did something unexpected`}</Text>
+                        {console.error(`unexpected event type: ${event.event_type}`)}
+                    </>
+            }
+            <Text style={[ styles.date ]} >{prettyDateTimeFromSQL(event.date_time)}</Text>
+        </View>
     </View>
 );
 
 const styles = StyleSheet.create({
     container: {
+        flexDirection: "row",
         borderBottomWidth: 2,
         borderBottomColor: "rgba( 0.2, 0.2, 0.2, 0.5 )",
+        paddingHorizontal: 10,
+    },
+    scarf: {
+        width: 20,
+    },
+    card: {
+        flex: 1,
+        padding: 10,
     },
     name: {
-
+        fontWeight: "bold",
     },
     message: {
 
