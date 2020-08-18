@@ -21,6 +21,7 @@ export default function App() {
     supplies: [],
     supply: { id: null, name: "", color: "" },
     items: [],
+    item: { id: null },
   });
   const sessionDataValue = { sessionData, setSessionData };
 
