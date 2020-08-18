@@ -15,7 +15,7 @@ const prettyDateTimeFromSQL = (SQLDateTime) => {
     const date = new Date(SQLDateTime);
     const hours = date.getHours();
     const minutes = date.getMinutes();
-    const timeFormatted = `${hours % 12}:${minutes} ${hours < 12 ? "AM" : "PM"}`;
+    const timeFormatted = `${hours === 0 ? 12 : hours % 12}:${minutes} ${hours < 12 ? "AM" : "PM"}`;
     const now = new Date();
     let dateFormatted = "";
 
