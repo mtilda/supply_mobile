@@ -55,7 +55,7 @@ const Activity = () => {
 
     return (
         <Layout>
-            <EventFeed events={events} units={units} activity={eventsActivity && unitsActivity} />
+            <EventFeed events={events} units={units} activity={eventsActivity || unitsActivity} />
         </Layout>
     )
 }
