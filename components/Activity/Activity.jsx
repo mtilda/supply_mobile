@@ -51,7 +51,7 @@ const Activity = () => {
             setEventsActivity(false);
         };
         makeAPICall();
-    },[]);
+    },[sessionData.supply.id]);
 
     return (
         <Layout>
