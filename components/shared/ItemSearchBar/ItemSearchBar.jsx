@@ -14,6 +14,7 @@ const ItemSearchBar = ({ query, handleChange, handleSearch }) => {
                 rightIcon = {
                     <Octicons name="search" size={20} color="black" onPress={() => handleSearch()} />
                 }
+                onSubmitEditing={() => handleSearch()}
             />
         </View>
     );
