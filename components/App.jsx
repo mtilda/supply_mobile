@@ -7,7 +7,7 @@ import Octicons from "react-native-vector-icons/Octicons";
 import Home from "./Home/Home.jsx";
 import Activity from "./Activity/Activity.jsx";
 import Inventory from "./Inventory.jsx";
-import ItemCreate from "./ItemCreate.jsx";
+import EventCreate from "./EventCreate/EventCreate";
 
 import SessionDataContext from "./context/SessionDataContext"
 
@@ -48,7 +48,7 @@ export default function App() {
                 case "Inventory":
                   iconName = "checklist";
                 break;
-                case "New Item":
+                case "New Event":
                   iconName = "diff-added";
                 break;
                 default:
@@ -68,7 +68,7 @@ export default function App() {
             <Tab.Screen name="Supplies" component={Home} options={{ size: 10 }} />
             <Tab.Screen name="Activity" component={Activity} />
             <Tab.Screen name="Inventory" component={Inventory} />
-            <Tab.Screen name="New Item" component={ItemCreate} />
+            <Tab.Screen name="New Event" component={EventCreate} />
         </Tab.Navigator>
       </NavigationContainer>
     </SessionDataContext.Provider>
