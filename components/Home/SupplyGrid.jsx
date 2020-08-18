@@ -15,7 +15,8 @@ const SupplyGrid = ({ supplies, selectSupply, activity }) => (
                     supplies[0]?
                         supplies.map( (supply, index) => <SupplyTile key={index} index={index} name={supply.name} color={supply.color} selectSupply={selectSupply} />)
                     :
-                        <Text>You aren't tracking any supplies yet</Text> }
+                        <Text>You aren't tracking any supplies yet</Text>
+            }
         </View>
     </View>
 )
