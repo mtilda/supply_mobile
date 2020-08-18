@@ -9,8 +9,7 @@ const EventFeed = ({ events, units, activity }) => {
             {
                 activity ?
                     <ActivityIndicator />
-                :
-                events[0]? units[0]?
+                : events[0]? units[0]?
                     <ScrollView>
                         { events.map( (event, index) => <EventFeedItem key={index} event={event} /> ) }
                     </ScrollView>
