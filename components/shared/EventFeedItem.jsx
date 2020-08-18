@@ -1,45 +1,62 @@
 import React from "react"
-import { View } from "react-native"
+import { StyleSheet, View } from "react-native"
 import { Text } from "react-native-elements";
 
+import { prettyDateTimeFromSQL } from "../../util/DateTime";
+
 const EventFeedItem = ({ event }) => (
-    <View>
-        <Text>{`${event.user.name}`}</Text>
+    <View style={[ styles.container, {backgroundColor:
+            event.event_type === "GET" ?            "green"
+        :   event.event_type === "DEPLETE" ?        "red"
+        :   event.event_type === "NEAR_DEPLETED" ?  "yellow"
+        :   event.event_type === "START" ?          "orange"
+        :   event.event_type === "STOP" ?           "teal"
+        :                                           "purple"
+    }]}>
+        <Text style={[ styles.name ]} >{`${event.user.name}`}</Text>
         {
             event.event_type === "GET" ?
-
-                <View>
-                    <Text>{`picked up ${event.delta} ${
-                        event.delta == 1 ?
-                            event.item.unit.singular
-                        :
-                            event.item.unit.plural
-                        } of ${event.item.name}`}</Text>
-                </View>
+                <Text style={[ styles.message ]} >{`picked up ${event.delta} ${
+                    event.delta == 1 ?
+                        event.item.unit.singular
+                    :
+                        event.item.unit.plural
+                    } of ${event.item.name}`}
+                </Text>
 
             : event.event_type === "DEPLETE" ?
+                <Text style={[ styles.message ]} >{`we ran out of ${event.item.name}`}</Text>
 
-                <Text>{`${event.item.name} ran out`}</Text>
-
-                : event.event_type === "NEAR_DEPLETED" ?
-
-                <Text>{`${event.item.name} is almost out`}</Text>
+            : event.event_type === "NEAR_DEPLETED" ?
+                <Text style={[ styles.message ]} >{`we're nearly out of ${event.item.name}`}</Text>
             
             : event.event_type === "START" ?
-
-                <Text>{`started tracking ${event.item.name}`}</Text>
+                <Text style={[ styles.message ]} >{`started tracking ${event.item.name}`}</Text>
             
             : event.event_type === "STOP" ?
-
-                <Text>{`stopped tracking ${event.item.name}`}</Text>
+                <Text style={[ styles.message ]} >{`stopped tracking ${event.item.name}`}</Text>
         
             :
                 <>
-                    <Text>{`did something unexpected`}</Text>
+                    <Text style={[ styles.message ]} >{`did something unexpected`}</Text>
                     {console.error(`unexpected event type: ${event.event_type}`)}
                 </>
         }
+        <Text style={[ styles.date ]} >{prettyDateTimeFromSQL(event.date_time)}</Text>
     </View>
 );
+
+const styles = StyleSheet.create({
+    container: {
+        borderBottomWidth: 2,
+        borderBottomColor: "rgba( 0.2, 0.2, 0.2, 0.5 )",
+    },
+    name: {
+
+    },
+    message: {
+
+    },
+});
 
 export default EventFeedItem;
