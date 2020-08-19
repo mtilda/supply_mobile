@@ -6,7 +6,6 @@ import Octicons from "react-native-vector-icons/Octicons";
 
 import Home from "./Home/Home.jsx";
 import Activity from "./Activity/Activity.jsx";
-import Inventory from "./Inventory.jsx";
 import EventCreate from "./EventCreate/EventCreate";
 
 import SessionDataContext from "./context/SessionDataContext"
@@ -16,8 +15,8 @@ const Tab = createBottomTabNavigator();
 export default function App() {
 
   const [sessionData, setSessionData] = useState({
-    group:  { id: 1, name: "House" },
-    user:   { id: 1, name: "Kay" },
+    group: { id: 1, name: "House" },
+    user: { id: 1, name: "Kay" },
     supplies: [],
     supply: { id: null, name: "", color: "" },
     items: [],
@@ -31,26 +30,23 @@ export default function App() {
         <Tab.Navigator
 
           screenOptions={({ route }) => ({
-            
+
             tabBarIcon: ({ focused, color, size }) => {
-              
+
               size = 40;
 
               let iconName;
 
-              switch(route.name) {
+              switch (route.name) {
                 case "Supplies":
                   iconName = "versions"
-                break;
+                  break;
                 case "Activity":
                   iconName = "list-unordered";
-                break;
-                case "Inventory":
-                  iconName = "checklist";
-                break;
+                  break;
                 case "New Event":
                   iconName = "diff-added";
-                break;
+                  break;
                 default:
                   break;
               }
@@ -65,10 +61,9 @@ export default function App() {
             style: { height: 70 },
           }}
         >
-            <Tab.Screen name="Supplies" component={Home} options={{ size: 10 }} />
-            <Tab.Screen name="Activity" component={Activity} />
-            <Tab.Screen name="Inventory" component={Inventory} />
-            <Tab.Screen name="New Event" component={EventCreate} />
+          <Tab.Screen name="Supplies" component={Home} options={{ size: 10 }} />
+          <Tab.Screen name="Activity" component={Activity} />
+          <Tab.Screen name="New Event" component={EventCreate} />
         </Tab.Navigator>
       </NavigationContainer>
     </SessionDataContext.Provider>
