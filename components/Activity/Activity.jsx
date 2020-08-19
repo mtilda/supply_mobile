@@ -3,8 +3,10 @@ import { Text } from "react-native";
 
 import axios from "axios";
 
-import Layout from "../shared/Layout.jsx";
-import EventFeed from "../shared/EventFeed.jsx";
+import Layout from "../shared/Layout";
+import ItemSearchBarContainer from "../shared/ItemSearchBar/ItemSearchBarContainer";
+import ItemDetails from "../shared/ItemDetails/ItemDetails"
+import EventFeed from "../shared/EventFeed";
 
 import SessionDataContext from "../context/SessionDataContext";
 
@@ -41,7 +43,7 @@ const Activity = () => {
             setEventsActivity(true);
             try {
                 const response = await axios({
-                    url: `https://mxk-supply-api.herokuapp.com/groups/${sessionData.group.id}/supplies/${sessionData.supply.id}/events`,
+                    url: `https://mxk-supply-api.herokuapp.com/groups/${sessionData.group.id}/supplies/${sessionData.supply.id}${sessionData.item.id ? "/items/" + sessionData.item.id : ""}/events`,
                     method: "GET"
                 });
                 setEvents(response.data);
@@ -51,10 +53,12 @@ const Activity = () => {
             setEventsActivity(false);
         };
         makeAPICall();
-    },[sessionData.supply.id]);
+    },[sessionData.supply.id,sessionData.item]);
 
     return (
         <Layout>
+            <ItemSearchBarContainer />
+            <ItemDetails item={sessionData.item} />
             <EventFeed events={events} units={units} activity={eventsActivity || unitsActivity} />
         </Layout>
     )
