@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Dimensions, View, Platform, StatusBar } from 'react-native';
 import { Text, Header } from 'react-native-elements';
 import Octicons from "react-native-vector-icons/Octicons";
 
-const groupTitle = "House", supplyTitle = "Groceries"
+import SessionDataContext from "../context/SessionDataContext";
 
 const Layout = ({ children }) => {
+    const { sessionData, setSessionData } = useContext(SessionDataContext);
 
     const headerHeight = 60;
 
@@ -16,7 +17,7 @@ const Layout = ({ children }) => {
                 height: Dimensions.get("window").height,
                 paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
             }} >
-            <Header containerStyle = {{ height: headerHeight }} >
+            <Header containerStyle = {{ height: headerHeight, backgroundColor: sessionData.supply.color || "#2B89DC" }} >
 
                 {/* leftComponent */}
                 <></>
@@ -32,7 +33,7 @@ const Layout = ({ children }) => {
                         color: "#fff"
                     }}
                 >
-                    {`${groupTitle} > ${supplyTitle}`}
+                    {`${sessionData.group.name}${sessionData.supply.name ? " > " + sessionData.supply.name : ""}`}
                 </Text>
 
                 {/* rightComponent */}
