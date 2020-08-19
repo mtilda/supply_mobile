@@ -92,9 +92,9 @@ const styles = StyleSheet.create({
         padding: 5,
     },
     untracked: { backgroundColor: "grey" },
-    depleted: { backgroundColor: "tomato" },
-    almostOut: { backgroundColor: "coral" },
-    inStock: { backgroundColor: "#00FA9A" },
+    depleted: { backgroundColor: "crimson" },
+    almostOut: { backgroundColor: "orange" },
+    inStock: { backgroundColor: "lightgreen" },
     buttonGroupContainer: {
         height: 300,
     },
