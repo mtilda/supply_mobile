@@ -7,11 +7,11 @@ import { prettyDateTimeFromSQL } from "../../util/DateTime";
 const EventFeedItem = ({ event }) => (
     <View style={styles.container}>
         <View style={[styles.scarf, { backgroundColor:
-                event.event_type === "GET" ?            "green"
-            :   event.event_type === "DEPLETE" ?        "red"
-            :   event.event_type === "NEAR_DEPLETED" ?  "yellow"
-            :   event.event_type === "START" ?          "orange"
-            :   event.event_type === "STOP" ?           "teal"
+                event.event_type === "GET" ?            "lightgreen"
+            :   event.event_type === "DEPLETE" ?        "crimson"
+            :   event.event_type === "NEAR_DEPLETED" ?  "orange"
+            :   event.event_type === "START" ?          "aquamarine"
+            :   event.event_type === "STOP" ?           "mediumvioletred"
             :                                           "purple"
         }]}/>
         <View style={styles.card} >
