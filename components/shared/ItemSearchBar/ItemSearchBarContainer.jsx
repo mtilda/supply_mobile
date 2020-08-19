@@ -34,20 +34,24 @@ const ItemSearchBarContainer = () => {
     const handleSearch = async () => {
         // console.log(sessionData.items);
         const item = sessionData.items.find( (item) => item.name === query )
-        if( item && item.id ) {
-            setMessage({content: "searching...", error: false});
-            axios({
-                url: `https://mxk-supply-api.herokuapp.com/groups/${sessionData.group.id}/supplies/${sessionData.supplies.id}/items/${item.id}`,
-                method: "GET"
-            })
-            .then( (response) => {
-                setSessionData({ ...sessionData, item: response.data });
-                setQuery("");
-                setMessage({content: "", error: false});
-            })
-            .catch((error) => setMessage({content: error, error: true}));
+        if( query.length > 0 ) {
+            if( item && item.id ) {
+                setMessage({content: "searching...", error: false});
+                axios({
+                    url: `https://mxk-supply-api.herokuapp.com/groups/${sessionData.group.id}/supplies/${sessionData.supplies.id}/items/${item.id}`,
+                    method: "GET"
+                })
+                .then( (response) => {
+                    setSessionData({ ...sessionData, item: response.data });
+                    setQuery("");
+                    setMessage({content: "", error: false});
+                })
+                .catch((error) => setMessage({content: error, error: true}));
+            } else {
+                setMessage({content: "item not found", error: true})
+            }
         } else {
-            setMessage({content: "item not found", error: true})
+            setSessionData({ ...sessionData, item: {} });
         }
     }
 
