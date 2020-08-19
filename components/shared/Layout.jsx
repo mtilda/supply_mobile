@@ -41,6 +41,7 @@ const Layout = ({ children }) => {
             </Header>
             <View style={{ height: Dimensions.get("window").height - headerHeight }}>
                 {children}
+                <View style={{height: 60}}/>
             </View>
         </View>
     );
