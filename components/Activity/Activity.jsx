@@ -6,7 +6,7 @@ import axios from "axios";
 import Layout from "../shared/Layout";
 import ItemSearchBarContainer from "../shared/ItemSearchBar/ItemSearchBarContainer";
 import ItemDetails from "../shared/ItemDetails/ItemDetails"
-import EventFeed from "../shared/EventFeed";
+import EventFeed from "./EventFeed";
 
 import SessionDataContext from "../context/SessionDataContext";
 
