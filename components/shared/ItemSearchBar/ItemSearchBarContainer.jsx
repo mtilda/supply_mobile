@@ -9,6 +9,7 @@ import ItemSearchBar from "./ItemSearchBar.jsx";
 const ItemSearchBarContainer = () => {
     const { sessionData, setSessionData } = useContext(SessionDataContext);
     const [ query, setQuery ] = useState("");
+    const [ message, setMessage ] = useState({content: "", error: false});
 
     // ON MOUNT or CHANGE of group, supply
     // FETCH items in current group, supply
@@ -33,25 +34,24 @@ const ItemSearchBarContainer = () => {
     const handleSearch = async () => {
         // console.log(sessionData.items);
         const item = sessionData.items.find( (item) => item.name === query )
-        console.log(item);
-        console.log(item.id);
-        if( item ) {
+        if( item && item.id ) {
+            setMessage({content: "searching...", error: false});
             axios({
                 url: `https://mxk-supply-api.herokuapp.com/groups/${sessionData.group.id}/supplies/${sessionData.supplies.id}/items/${item.id}`,
                 method: "GET"
             })
             .then( (response) => {
-                console.log(response.data);
                 setSessionData({ ...sessionData, item: response.data });
-                // setQuery("");
+                setQuery("");
+                setMessage({content: "", error: false});
             })
-            .catch((error) => console.error(error));
+            .catch((error) => setMessage({content: error, error: true}));
         } else {
-            console.error("item not found")
+            setMessage({content: "item not found", error: true})
         }
     }
 
-    return <ItemSearchBar query={query} handleChange={handleChange} handleSearch={handleSearch} />
+    return <ItemSearchBar query={query} message={message} handleChange={handleChange} handleSearch={handleSearch} />
 }
 
 export default ItemSearchBarContainer
