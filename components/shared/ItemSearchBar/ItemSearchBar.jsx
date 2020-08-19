@@ -14,6 +14,7 @@ const ItemSearchBar = ({ query, message, handleChange, handleSearch }) => (
                 <Octicons name="search" size={20} color="black" onPress={() => handleSearch()} />
             }
             onSubmitEditing={() => handleSearch()}
+            autoCapitalize="none"
         />
         <Text style={[styles.message, { color: message.error ? "red" : "black" }]}>{message.content}</Text>
     </View>
