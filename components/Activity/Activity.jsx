@@ -37,7 +37,7 @@ const Activity = () => {
     },[]);
 
     // ON MOUNT
-    // FETCH events in current supply
+    // FETCH events in active supply
     useEffect(() => {
         const makeAPICall = async () => {
             setEventsActivity(true);
