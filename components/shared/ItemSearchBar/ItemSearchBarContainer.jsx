@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { View } from "react-native";
+import  { SearchBar } from "react-native-elements";
 import axios from "axios";
 
 import SessionDataContext from "../../context/SessionDataContext";
@@ -25,14 +26,7 @@ const ItemSearchBarContainer = () => {
         .catch((error) => console.error(error));
     },[sessionData.group, sessionData.supply]);
 
-    const handleChange = (value) => {
-        setQuery(value);
-    }
-
-    // FIND item matching the current search query
-    // FETCH that item's data
-    const handleSearch = async () => {
-        // console.log(sessionData.items);
+    useEffect( () => {
         const item = sessionData.items.find( (item) => item.name === query )
         if( query.length > 0 ) {
             if( item && item.id ) {
@@ -43,7 +37,6 @@ const ItemSearchBarContainer = () => {
                 })
                 .then( (response) => {
                     setSessionData({ ...sessionData, item: response.data });
-                    setQuery("");
                     setMessage({content: "", error: false});
                 })
                 .catch((error) => setMessage({content: error, error: true}));
@@ -53,9 +46,17 @@ const ItemSearchBarContainer = () => {
         } else {
             setSessionData({ ...sessionData, item: {} });
         }
+    },[query])
+
+    const handleChange = (value) => {
+        setQuery(value);
     }
 
-    return <ItemSearchBar query={query} message={message} handleChange={handleChange} handleSearch={handleSearch} />
+    const handleCancel = async () => {
+        setQuery("");
+    }
+
+    return <ItemSearchBar query={query} message={message} handleChange={handleChange} handleCancel={handleCancel} />
 }
 
 export default ItemSearchBarContainer
