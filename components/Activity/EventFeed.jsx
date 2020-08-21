@@ -1,11 +1,11 @@
 import React from 'react';
-import { ActivityIndicator, SafeAreaView, ScrollView, View, Text } from 'react-native';
+import { ActivityIndicator, ScrollView, View, Text } from 'react-native';
 
 import EventFeedItem from "./EventFeedItem";
 
 const EventFeed = ({ events, units, activity }) => {
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <View style={{ flex: 1, padding: 10 }}>
             {
                 activity ?
                     <ActivityIndicator />
@@ -20,7 +20,7 @@ const EventFeed = ({ events, units, activity }) => {
                 :
                     <Text>Unable to fetch data from server</Text>
             }
-        </SafeAreaView>
+        </View>
     );
 }
 
