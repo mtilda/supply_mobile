@@ -1,6 +1,6 @@
-# Supply
+# Supply Mobile
 
-A clean and flexible inventory management mobile application for small groups. Use this app to tell your roommates when you run out of something or when you buy more. Over time, the app will build a statistical model of your consumption patterns and help you decide when to go shopping and how much to buy.
+A customizable inventory management mobile application for small groups. Use this app to tell your roommates when you run out of something or when you buy more. Over time, the app will build a statistical model of your consumption patterns and help you decide when to go shopping and how much to buy.
 
 ![](https://res.cloudinary.com/dzwu8mhc1/image/upload/v1599111537/project%20portfolio/supply/collage_fv1qjm.png)
 
